@@ -116,6 +116,46 @@
           }
         }
       }
+    },
+    "EHandler": {
+      "root": "projects/ehandler",
+      "sourceRoot": "projects/ehandler/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ehandler/tsconfig.lib.json",
+            "project": "projects/ehandler/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ehandler/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ehandler/src/test.ts",
+            "tsConfig": "projects/ehandler/tsconfig.spec.json",
+            "karmaConfig": "projects/ehandler/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ehandler/tsconfig.lib.json",
+              "projects/ehandler/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "Handler"
